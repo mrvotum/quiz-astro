@@ -1,0 +1,19 @@
+---
+export interface Props {
+    inputId: string,
+    inputPlaceholder: string,
+}
+const {inputId, inputPlaceholder} = Astro.props;
+---
+<div class="input-wrapped">
+	<label class="label-placeholder" for={inputId}>{inputPlaceholder}</label>
+	<input id={inputId} data-text={inputPlaceholder} type="text">
+</div>
+
+<script>
+	import InputsWithPlaceholder from './main.js';
+
+	// Инициализация класса
+	const inputsWithPlaceholder = new InputsWithPlaceholder();
+	inputsWithPlaceholder.init();
+</script>

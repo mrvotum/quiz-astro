@@ -1,0 +1,38 @@
+$input-pt: 8px;
+$input-pl: 16px;
+
+input[type="text"] {
+	width: 100%;
+	border-radius: 50px;
+	border: 1px solid #ccc;
+	padding: $input-pt $input-pl;
+	box-sizing: border-box;
+}
+
+// Стили для input с placeholder'ом
+.input-wrapped {
+	position: relative;
+	margin-bottom: 16px;
+	width: 100%;
+
+	.label-placeholder {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		left: 16px;
+		font-size: 0.8em;
+		line-height: 1;
+		color: #ccc;
+		transition: all 0.2s ease-in-out;
+		width: 100%;
+		max-width: calc(100% - #{$input-pl} * 2);
+
+		&.is-active {
+			transform: translate(
+					calc(-#{$input-pl} - 1em),
+					calc(-100% - #{$input-pt} * 2)
+				)
+				scale(0.8);
+		}
+	}
+}
