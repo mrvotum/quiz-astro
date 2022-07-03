@@ -1,0 +1,97 @@
+---
+import InputComponent from '../../components/inputComponent/InputComponent.astro';
+export interface Quiz {
+  blockId: number,
+  quizTitle: string,
+  questions: Array<Question>
+}
+
+export interface Question {
+  questionId: number,
+  question: string,
+  description: string,
+}
+
+const { quiz } = Astro.Quiz;
+---
+
+<div class="quiz"> <!-- quiz--disabled"> -->
+	<div class="quiz__form">
+		<InputComponent inputId="personName" inputPlaceholder="Name" client:load />
+		<InputComponent inputId="personSurname" inputPlaceholder="Surname" client:load />
+		<button class="btn" data-btn="quiz-start" type="submit">Start</button>
+	</div>
+	<div class="quiz__list quiz__list-hidden" data-quiz-list={quiz.blockId}>
+		<h2 class="quiz__title">{quiz.quizTitle}</h2>
+
+		{
+			quiz.questions.length.forEach(element => {
+
+			});
+		}
+
+		<strong>{quiz.questions.length}</strong>
+
+		<div class="quiz__question" data-question="question-1">
+			<h3>Какой-то термин 1</h3>
+			<p>Пояснение к термину 1, которое должно занимать несколько строк. Lorem ipsum dolor sit amet,
+				consectetur adipisicing elit. Dignissimos, ab.</p>
+			<div class="answers">
+				<input type="radio" name="question-1" id="question-1-1">
+				<label class="answer" for="question-1-1">1</label>
+				<input type="radio" name="question-1" id="question-1-2">
+				<label class="answer" for="question-1-2">2</label>
+				<input type="radio" name="question-1" id="question-1-3">
+				<label class="answer" for="question-1-3">3</label>
+				<input type="radio" name="question-1" id="question-1-4">
+				<label class="answer" for="question-1-4">4</label>
+				<input type="radio" name="question-1" id="question-1-5">
+				<label class="answer" for="question-1-5">5</label>
+			</div>
+			<pre>{ JSON.stringify(quiz) }</pre>
+		</div>
+		<div class="quiz__question quiz__question--hidden" data-question="question-2">
+			<h3>Какой-то термин 2</h3>
+			<p>Пояснение к термину 2, которое должно занимать несколько строк. Lorem ipsum dolor sit amet,
+				consectetur adipisicing elit. Dignissimos, ab.</p>
+			<div class="answers">
+				<input type="radio" name="question-2" id="question-2-1">
+				<label class="answer" for="question-2-1">1</label>
+				<input type="radio" name="question-2" id="question-2-2">
+				<label class="answer" for="question-2-2">2</label>
+				<input type="radio" name="question-2" id="question-2-3">
+				<label class="answer" for="question-2-3">3</label>
+				<input type="radio" name="question-2" id="question-2-4">
+				<label class="answer" for="question-2-4">4</label>
+				<input type="radio" name="question-2" id="question-2-5">
+				<label class="answer" for="question-2-5">5</label>
+			</div>
+		</div>
+		<div class="quiz__question quiz__question--hidden" data-question="question-3">
+			<h3>Какой-то термин 3</h3>
+			<p>Пояснение к термину 3, которое должно занимать несколько строк. Lorem ipsum dolor sit amet,
+				consectetur adipisicing elit. Dignissimos, ab.</p>
+			<div class="answers">
+				<input type="radio" name="question-3" id="question-3-1">
+				<label class="answer" for="question-3-1">1</label>
+				<input type="radio" name="question-3" id="question-3-2">
+				<label class="answer" for="question-3-2">2</label>
+				<input type="radio" name="question-3" id="question-3-3">
+				<label class="answer" for="question-3-3">3</label>
+				<input type="radio" name="question-3" id="question-3-4">
+				<label class="answer" for="question-3-4">4</label>
+				<input type="radio" name="question-3" id="question-3-5">
+				<label class="answer" for="question-3-5">5</label>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	import QuizForm from './main.js';
+
+	// Инициализация класса
+	const quizFormEl = document.querySelector(".quiz");
+	const quizForm = new QuizForm(quizFormEl);
+	quizForm.init();
+</script>
