@@ -1,74 +1,166 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Quize from '../components/quize/Quize.astro';
+import BarChart from '../components/barChart/BarChart.astro';
+import '../styles/styles.scss';
 ---
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>оторое должно занимать несколько строк. Loremo <span class="text-gradient">Astro</span></h1>
-		<h1>Go to <span class="text-gradient"><a href="./quize">Quiz</a></span></h1>
-		<p class="instructions">
-			Check out the <code>src/pages</code> directory to get started.<br/>
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<!-- <Card href="https://docs.astro.build/" title="Documentation" body="Learn how Astro works and explore the official API docs." />
-			<Card href="https://astro.build/integrations/" title="Integrations" body="Supercharge your project with new frameworks and libraries." />
-			<Card href="https://astro.build/themes/" title="Themes" body="Explore a galaxy of community-built starter themes." />
-			<Card href="https://astro.build/chat/" title="Chat" body="Come say hi to our amazing Discord community. ❤️" /> -->
-		</ul>
-	</main>
+
+<Layout title="Skill test">
+	<Quize quiz={[
+		{
+			blockId: 1,
+			quizTitle: 'Soft skills',
+			questions: [
+				{
+					questionId: 1,
+					question: 'Командное взаимодействие',
+					description: 'навыки работы в команде'
+				},
+				{
+					questionId: 2,
+					question: 'Дисциплинированность',
+					description: 'тайм-менеджмент и умение расставлять приоритеты'
+				},
+				{
+					questionId: 3,
+					question: 'Самоорганизация',
+					description: 'умение самостоятельно выстраивать приоритеты в задачах, самостоятельный поиск нужной информации'
+				},
+				{
+					questionId: 4,
+					question: 'Креативность и гибкость',
+					description: 'умение быстро адаптироваться к новым условиям и находить нестандартные варианты решения ситуации'
+				},
+				{
+					questionId: 5,
+					question: 'Стрессоустойчивость',
+					description: 'собранность в стрессовых ситуациях, способность не передавать тревогу другим членам команды'
+				},
+				{
+					questionId: 6,
+					question: 'Инициативность',
+					description: 'предлагать свои пути решения задачи'
+				},
+				{
+					questionId: 7,
+					question: 'Навыки мышления',
+					description: 'умение определять и анализировать проблемы, чтобы быстро приходить к продуманным решениям'
+				},
+				{
+					questionId: 8,
+					question: '',
+					description: ''
+				}
+			]
+		},
+		{
+			blockId: 2,
+			quizTitle: 'Hard skills',
+			questions: [
+				{
+					questionId: 1,
+					question: 'Vanilla JS',
+					description: 'Знание и понимание базового ЖС'
+				},
+				{
+					questionId: 2,
+					question: 'Browser APIs',
+					description: ''
+				},
+				{
+					questionId: 3,
+					question: 'JavaScript libraries (animations, UI, total experience)',
+					description: 'Трудно представить современный и\или сложный продукт без библиотек'
+				},
+				{
+					questionId: 4,
+					question: 'JavaScript frameworks (vue2, vue 3)',
+					description: ''
+				},
+				{
+					questionId: 5,
+					question: 'Debugging & optimization (devTools, performance)',
+					description: 'Для качественного продукта нужно не просто слышать об этих вещах, но и хоть сколько то понимать и использовать на практике'
+				},
+				{
+					questionId: 6,
+					question: 'Node JS (express)',
+					description: ''
+				},
+				{
+					questionId: 7,
+					question: 'HTML5 (base, semantics, pug/ejs)',
+					description: 'Базовые вещи для web-разработки'
+				},
+				{
+					questionId: 8,
+					question: 'Css (scss, animations, responsive, browser specific, BEM)',
+					description: ''
+				},
+				{
+					questionId: 9,
+					question: 'UI\UX',
+					description: 'Для разработчика эта графа читается как "понимание". Нужно для общение с дизайнерами и участия в обсуждении кастома с менеджерами'
+				},
+				{
+					questionId: 10,
+					question: 'SVG (tags, attributes, SMIL, css, js, browser specific)',
+					description: ''
+				},
+				{
+					questionId: 11,
+					question: '',
+					description: ''
+				}
+			]
+		},
+		{
+			blockId: 3,
+			quizTitle: 'Ets',
+			questions: [
+				{
+					questionId: 1,
+					question: 'GIT',
+					description: 'Пояснение к термину 1, которое должно занимать несколько строк.'
+				},
+				{
+					questionId: 2,
+					question: 'Adobe Illustrator',
+					description: 'Пояснение к термину 2, которое должно занимать несколько строк.'
+				},
+				{
+					questionId: 3,
+					question: 'Figma',
+					description: ''
+				},
+				{
+					questionId: 4,
+					question: 'Linux command line',
+					description: ''
+				},
+				{
+					questionId: 5,
+					question: 'Chrome DevTools',
+					description: 'важный скилл помогающий экономить время и нервы'
+				},
+				{
+					questionId: 6,
+					question: 'Bundler & tas runner (webpack 4/5, plugins/modules, gulp 4, etc.)',
+					description: ''
+				},
+				{
+					questionId: 7,
+					question: 'TypeScript',
+					description: ''
+				},
+				{
+					questionId: 8,
+					question: '',
+					description: ''
+				}
+			]
+		}
+		]} client:load />
+
+	<BarChart knowledgeLevel={['Passer', 'Junior', 'Middle', 'Senior', 'Lead', 'Director']} client:visible />
 </Layout>
-
-<style>
-	:root {
-		--astro-gradient: linear-gradient(0deg,#4F39FA, #DA62C4);
-	}
-
-	h1 {
-		margin: 2rem 0;
-	}
-
-	main {
-		margin: auto;
-    	padding: 1em;
-		max-width: 60ch;
-	}
-
-	.text-gradient {
-		font-weight: 900;
-		background-image: var(--astro-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 100% 200%;
-		background-position-y: 100%;
-		border-radius: 0.4rem;
-		animation: pulse 4s ease-in-out infinite;
-	}
-
-	@keyframes pulse {
-		0%, 100% { background-position-y: 0%; }
-		50% { background-position-y: 80%; }
-	}
-
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		background: #4F39FA;
-		padding: 1.0rem;
-		border-radius: 0.4rem;
-		color: var(--color-bg);
-	}
-
-	.instructions code {
-		font-size: 0.875em;
-		border: 0.1em solid var(--color-border);
-		border-radius: 4px;
-		padding: 0.15em 0.25em;
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
-</style>
