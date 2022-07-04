@@ -104,7 +104,7 @@ export default class QuizForm {
 				const btnEl = document.createElement("button");
 				btnEl.classList.add("btn");
 				btnEl.setAttribute("type", "submit");
-				btnEl.textContent = "Next";
+				btnEl.textContent = "Далее";
 
 				answersBlock.appendChild(btnEl);
 

@@ -22,7 +22,7 @@ const { quiz } = Astro.props;
 	<div class="quiz__form">
 		<InputComponent inputId="personName" inputPlaceholder="Name" client:load />
 		<InputComponent inputId="personSurname" inputPlaceholder="Surname" client:load />
-		<button class="btn" data-btn="quiz-start" type="submit">Start</button>
+		<button class="btn" data-btn="quiz-start" type="submit">Начать</button>
 		<br><button class="btn" data-btn="quiz-random" type="submit">Рандомные данные</button>
 	</div>
 	{ quiz.map((questionsBlock) => {
