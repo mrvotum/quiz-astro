@@ -1,7 +1,7 @@
 .chart-wrapper {
 	// display: flex;
 	display: none;
-	width: 100vw;
+	width: calc(100vw - 40px);
 	max-width: 1200px;
 	height: 100vh;
 	margin: auto;
@@ -22,6 +22,7 @@
 		align-items: center;
 		justify-content: space-between;
 		margin-bottom: 30px;
+		font-size: 36px;
 
 		.person {
 			display: flex;
@@ -29,12 +30,12 @@
 			width: 10%;
 			text-align: right;
 			line-height: 0.8;
+			font-size: 0.4em;
 		}
 
 		.result {
 			display: flex;
 			width: calc(90% - 10px);
-			font-size: 36px;
 
 			&__score {
 				flex-shrink: 0;
@@ -196,6 +197,86 @@
 				opacity: 0;
 				transform: translateY(5px);
 			}
+		}
+	}
+}
+
+@media screen and (max-width: 1055px) {
+	.bar-chart {
+		&__legend,
+		.figcaption .person{
+			width: 15%;
+			padding-right: 6px;
+		}
+
+		&__columns
+		.figcaption .result {
+			width: calc(85% - 10px);
+		}
+	}
+}
+
+@media screen and (max-width: 740px) {
+	.bar-chart {
+		&__legend-label {
+			display: flex;
+			flex-direction: column;
+			position: relative;
+
+			&::before {
+				position: absolute;
+				content: '';
+				width: 40px;
+				background-color: rgb(39, 39, 39);
+				height: 1px;
+				top: 50%;
+				right: -10px;
+				transform: translateY(-50%);
+			}
+		}
+
+		&__columns {
+			width: calc(85% - 10px);
+		}
+
+		&__column-quote {
+			display: none !important;
+		}
+	}
+}
+
+@media screen and (max-width: 512px) {
+	.bar-chart {
+		.figcaption {
+			margin-bottom: 16px;
+			font-size: 26px;
+		}
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.bar-chart {
+		.figcaption {
+    		flex-direction: column-reverse;
+			align-items: flex-start;
+
+			.result {
+				width: 100%;
+			}
+
+			.person {
+				font-size: 0.6em;
+				flex-direction: row;
+				width: 100%;
+
+				&__name {
+					padding-right: 6px;
+				}
+			}
+		}
+
+		&__legend-label strong {
+			font-size: 0.8em;
 		}
 	}
 }

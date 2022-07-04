@@ -10,8 +10,8 @@ export default class QuizForm {
 		this.answer = [...this.parent.querySelectorAll(".answer")];
 		this.questionCount = 1;
 		this.personInfo = {
-			personName: "",
-			personSurname: "",
+			personName: null,
+			personSurname: null,
 			maxScore: 0,
 		};
 		this.questionsBlocksCount = 1;
@@ -51,9 +51,26 @@ export default class QuizForm {
 				this.personInfo[element.getAttribute('id')] = element.value;
 			});
 
-			this.form.style.display = "none";
-			this.parent.classList.remove("quiz--disabled");
-			this.quizList.classList.remove("quiz__list--hidden");
+			if (this.personInfo.personName && this.personInfo.personSurname) {
+				this.form.style.display = "none";
+				this.parent.classList.remove("quiz--disabled");
+				this.quizList.classList.remove("quiz__list--hidden");
+			} else {
+				const divEl = document.createElement("div");
+				divEl.classList.add("error-message");
+				divEl.innerHTML = `Поля обязательны для заполнения.<br>Введите хоть что-нибудь или нажмите "Рандомные данные"`;
+
+				this.btnStart.parentElement.appendChild(divEl);
+				setTimeout(() => {
+					divEl.classList.add('is-active');
+				}, 100);
+				setTimeout(() => {
+					divEl.classList.remove('is-active');
+				}, 1400);
+				setTimeout(() => {
+					divEl.remove();
+				}, 1600);
+			}
 		});
 
 		// this.inputs.forEach((element) => {
@@ -134,6 +151,15 @@ export default class QuizForm {
 				nextBlock.className = "quiz__question";
 				this.questionCount = 1;
 				this.questionsBlocksCount += 1;
+
+				// Плавно скроллим страницу, чтобы не потерять вопросы
+				const elementPosition = nextBlock.getBoundingClientRect().top;
+				const offsetPosition = elementPosition;
+
+				window.scrollBy({
+					top: offsetPosition,
+					behavior: 'smooth'
+				});
 			} else {
 				this.calculateScore();
 				this.showResults();
