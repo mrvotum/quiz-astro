@@ -36,10 +36,18 @@ export default class BarChart {
 			totalScore += this.convertScore(this.personInfo[`category${i + 1}`], this.personInfo[`categoryCount${i + 1}`]);
 
 			element.style.height = `${this.convertScore(this.personInfo[`category${i + 1}`], this.personInfo[`categoryCount${i + 1}`], true)}%`;
+
+			setTimeout(() => {
+				element.classList.remove('bar-chart__column--hidden');
+			}, 200);
 		});
 
 		this.parent.querySelector('.result__score-total').textContent = Math.round(totalScore / 3);
 		this.parent.querySelector('.result__level').textContent = this.levelResult(Math.round(totalScore / 3));
+
+		setTimeout(() => {
+			this.parent.querySelector('.result').classList.remove('result--hidden');
+		}, 600);
 	}
 
 	convertScore(score, qCounter, toPercent) {

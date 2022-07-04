@@ -13,7 +13,7 @@ const { knowledgeLevel } = Astro.props;
 				<span class="person__name"></span>
 				<span class="person__surname"></span>
 			</span>
-			<span class="result">
+			<span class="result result--hidden">
 				<span class="result__score">Score <span class="result__score-total"></span></span>
 				<span class="result__arrow"></span>
 				<span class="result__level"></span>
@@ -30,17 +30,17 @@ const { knowledgeLevel } = Astro.props;
 				}) }
 			</div>
 			<div class="bar-chart__columns">
-				<div class="bar-chart__column" style="background-color: #9D8DC7;" data-bar-chart="1">
+				<div class="bar-chart__column bar-chart__column--hidden" style="background-color: #9D8DC7;" data-bar-chart="1">
 					<span class="bar-chart__column-result"></span>
 					<span class="bar-chart__column-quote">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</span>
 					<span class="bar-chart__column-label"></span>
 				</div>
-				<div class="bar-chart__column" style="background-color: #82A7C8;" data-bar-chart="2">
+				<div class="bar-chart__column bar-chart__column--hidden" style="background-color: #82A7C8;" data-bar-chart="2">
 					<span class="bar-chart__column-result"></span>
 					<span class="bar-chart__column-quote">Ullam libero alias eos. Dignissimos magnam non dolorum architecto quis corrupti ab</span>
 					<span class="bar-chart__column-label"></span>
 				</div>
-				<div class="bar-chart__column" style="background-color: #60914A;" data-bar-chart="3">
+				<div class="bar-chart__column bar-chart__column--hidden" style="background-color: #60914A;" data-bar-chart="3">
 					<span class="bar-chart__column-result"></span>
 					<span class="bar-chart__column-quote">harum ratione quod perferendis hic nesciunt voluptatem aliquid nam officia!</span>
 					<span class="bar-chart__column-label"></span>

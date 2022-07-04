@@ -36,6 +36,13 @@
 
 			&__score {
 				flex-shrink: 0;
+
+				&-total {
+					display: inline-block;
+					transition:
+						opacity 0.4s ease-in,
+						transform 0.4s ease-in;
+				}
 			}
 
 			&__arrow {
@@ -46,6 +53,9 @@
 				flex-shrink: 1;
 				height: 1em;
 				margin: 0 26px 0 16px;
+				transition:
+						opacity 0.4s ease-in 0.2s,
+						transform 0.4s ease-in 0.2s;
 
 				&::before {
 					position: absolute;
@@ -71,6 +81,18 @@
 
 			&__level {
 				flex-shrink: 0;
+				transition:
+					opacity 0.4s ease-in 0.3s,
+					transform 0.4s ease-in 0.3s;
+			}
+
+			&--hidden {
+				.result__level,
+				.result__arrow,
+				.result__score-total {
+					opacity: 0;
+					transform: translateX(-5px);
+				}
 			}
 		}
 	}
@@ -104,6 +126,8 @@
 	}
 
 	&__column {
+		$animation-delay: 100ms;
+
 		position: relative;
 		width: 33%;
 		display: flex;
@@ -111,6 +135,8 @@
 		justify-content: flex-end;
 		padding: 10px;
 		box-sizing: border-box;
+		transition: all 0.4s ease-in $animation-delay;
+		opacity: 1;
 
 		span {
 			display: block;
@@ -118,17 +144,26 @@
 		}
 
 		&-result {
+			transition:
+				opacity 0.2s ease-in $animation-delay + 600,
+				transform 0.2s ease-in $animation-delay + 600;
 			text-align: right;
 			margin-bottom: auto;
 		}
 
 		&-quote {
+			transition:
+				opacity 0.2s ease-in $animation-delay + 500,
+				transform 0.2s ease-in $animation-delay + 500;
 			font-size: 14px;
 			opacity: 0.8;
 			font-weight: 100;
 		}
 
 		&-label {
+			transition:
+				opacity 0.2s ease-in $animation-delay + 400,
+				transform 0.2s ease-in $animation-delay + 400;
 			margin-top: 10px;
 		}
 
@@ -141,6 +176,18 @@
 			opacity: 0.1;
 			left: 0;
 			bottom: 0;
+		}
+
+		&--hidden {
+			height: 0 !important;
+			opacity: 0;
+
+			.bar-chart__column-result,
+			.bar-chart__column-quote,
+			.bar-chart__column-label {
+				opacity: 0;
+				transform: translateY(5px);
+			}
 		}
 	}
 }
