@@ -1,39 +1,166 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Quize from '../../components/quize/Quize.astro';
+import BarChart from '../../components/barChart/BarChart.astro';
 import '../../styles/styles.scss';
 ---
 
 <Layout title="Welcome to Astro.">
-	<Quize quiz={{
-		blockId: 1,
-		quizTitle: 'Soft skills',
-		questions: [
-			{
-				questionId: 1,
-				question: 'Какой-то термин 1',
-				description: 'Пояснение к термину 1, которое должно занимать несколько строк.'
-			},
-			{
-				questionId: 2,
-				question: 'Какой-то термин 2',
-				description: 'Пояснение к термину 2, которое должно занимать несколько строк.'
-			},
-			{
-				questionId: 3,
-				question: 'Какой-то термин 3',
-				description: 'Пояснение к термину 3, которое должно занимать несколько строк.'
-			},
-			{
-				questionId: 4,
-				question: 'Какой-то термин 4',
-				description: 'Пояснение к термину 4, которое должно занимать несколько строк.'
-			},
-			{
-				questionId: 5,
-				question: 'Какой-то термин 5',
-				description: 'Пояснение к термину 5, которое должно занимать несколько строк.'
-			}
-		]
-		}} client:load />
+	<Quize quiz={[
+		{
+			blockId: 1,
+			quizTitle: 'Soft skills',
+			questions: [
+				{
+					questionId: 1,
+					question: 'Командное взаимодействие',
+					description: 'навыки работы в команде'
+				},
+				{
+					questionId: 2,
+					question: 'Дисциплинированность',
+					description: 'тайм-менеджмент и умение расставлять приоритеты'
+				},
+				{
+					questionId: 3,
+					question: 'Самоорганизация',
+					description: 'умение самостоятельно выстраивать приоритеты в задачах, самостоятельный поиск нужной информации'
+				},
+				{
+					questionId: 4,
+					question: 'Креативность и гибкость',
+					description: 'умение быстро адаптироваться к новым условиям и находить нестандартные варианты решения ситуации'
+				},
+				{
+					questionId: 5,
+					question: 'Стрессоустойчивость',
+					description: 'собранность в стрессовых ситуациях, способность не передавать тревогу другим членам команды'
+				},
+				{
+					questionId: 6,
+					question: 'Инициативность',
+					description: 'предлагать свои пути решения задачи'
+				},
+				{
+					questionId: 7,
+					question: 'Навыки мышления',
+					description: 'умение определять и анализировать проблемы, чтобы быстро приходить к продуманным решениям'
+				},
+				{
+					questionId: 8,
+					question: '',
+					description: ''
+				}
+			]
+		},
+		{
+			blockId: 2,
+			quizTitle: 'Hard skills',
+			questions: [
+				{
+					questionId: 1,
+					question: 'Vanilla JS',
+					description: 'Знание и понимание базового ЖС'
+				},
+				{
+					questionId: 2,
+					question: 'Browser APIs',
+					description: ''
+				},
+				{
+					questionId: 3,
+					question: 'JavaScript libraries (animations, UI, total experience)',
+					description: 'Трудно представить современный и\или сложный продукт без библиотек'
+				},
+				{
+					questionId: 4,
+					question: 'JavaScript frameworks (vue2, vue 3)',
+					description: ''
+				},
+				{
+					questionId: 5,
+					question: 'Debugging & optimization (devTools, performance)',
+					description: 'Для качественного продукта нужно не просто слышать об этих вещах, но и хоть сколько то понимать и использовать на практике'
+				},
+				{
+					questionId: 6,
+					question: 'Node JS (express)',
+					description: ''
+				},
+				{
+					questionId: 7,
+					question: 'HTML5 (base, semantics, pug/ejs)',
+					description: 'Базовые вещи для web-разработки'
+				},
+				{
+					questionId: 8,
+					question: 'Css (scss, animations, responsive, browser specific, BEM)',
+					description: ''
+				},
+				{
+					questionId: 9,
+					question: 'UI\UX',
+					description: 'Для разработчика эта графа читается как "понимание". Нужно для общение с дизайнерами и участия в обсуждении кастома с менеджерами'
+				},
+				{
+					questionId: 10,
+					question: 'SVG (tags, attributes, SMIL, css, js, browser specific)',
+					description: ''
+				},
+				{
+					questionId: 11,
+					question: '',
+					description: ''
+				}
+			]
+		},
+		{
+			blockId: 3,
+			quizTitle: 'Ets',
+			questions: [
+				{
+					questionId: 1,
+					question: 'GIT',
+					description: 'Пояснение к термину 1, которое должно занимать несколько строк.'
+				},
+				{
+					questionId: 2,
+					question: 'Adobe Illustrator',
+					description: 'Пояснение к термину 2, которое должно занимать несколько строк.'
+				},
+				{
+					questionId: 3,
+					question: 'Figma',
+					description: ''
+				},
+				{
+					questionId: 4,
+					question: 'Linux command line',
+					description: ''
+				},
+				{
+					questionId: 5,
+					question: 'Chrome DevTools',
+					description: 'важный скилл помогающий экономить время и нервы'
+				},
+				{
+					questionId: 6,
+					question: 'Bundler & tas runner (webpack 4/5, plugins/modules, gulp 4, etc.)',
+					description: ''
+				},
+				{
+					questionId: 7,
+					question: 'TypeScript',
+					description: ''
+				},
+				{
+					questionId: 8,
+					question: '',
+					description: ''
+				}
+			]
+		}
+		]} client:load />
+
+	<BarChart knowledgeLevel={['Passer', 'Junior', 'Middle', 'Senior', 'Lead', 'Director']} client:visible />
 </Layout>

@@ -1,0 +1,146 @@
+.chart-wrapper {
+	// display: flex;
+	display: none;
+	width: 100vw;
+	max-width: 1200px;
+	height: 100vh;
+	margin: auto;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+}
+
+.bar-chart {
+	width: 100%;
+	background-color: #ffffff;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2);
+
+	.figcaption {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 30px;
+
+		.person {
+			width: 10%;
+			text-align: right;
+			line-height: 1;
+		}
+
+		.result {
+			display: flex;
+			width: calc(90% - 10px);
+			font-size: 36px;
+
+			&__score {
+				flex-shrink: 0;
+			}
+
+			&__arrow {
+				position: relative;
+				display: inline-block;
+				// width: 60px;
+				flex-basis: 60%;
+				flex-shrink: 1;
+				height: 1em;
+				margin: 0 26px 0 16px;
+
+				&::before {
+					position: absolute;
+					content: "";
+					width: 100%;
+					height: 2px;
+					background-color: #000;
+					top: 50%;
+					left: 0;
+					transform: translateY(-50%);
+				}
+
+				&::after {
+					position: absolute;
+					content: "";
+					border: 8px solid transparent;
+					border-left-color: #000;
+					top: 50%;
+					left: 100%;
+					transform: translateY(-50%);
+				}
+			}
+
+			&__level {
+				flex-shrink: 0;
+			}
+		}
+	}
+
+	&__wrapper {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		height: 400px;
+	}
+
+	&__legend {
+		display: flex;
+		flex-direction: column-reverse;
+		width: 10%;
+		height: 100%;
+		justify-content: space-between;
+
+		&-label {
+			display: inline-block;
+			white-space: nowrap;
+		}
+	}
+
+	&__columns {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		width: calc(90% - 10px);
+		height: 100%;
+	}
+
+	&__column {
+		position: relative;
+		width: 33%;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		padding: 10px;
+		box-sizing: border-box;
+
+		span {
+			display: block;
+			color: #ffffff;
+		}
+
+		&-result {
+			text-align: right;
+			margin-bottom: auto;
+		}
+
+		&-quote {
+			font-size: 14px;
+			opacity: 0.8;
+			font-weight: 100;
+		}
+
+		&-label {
+			margin-top: 10px;
+		}
+
+		&::before {
+			position: absolute;
+			content: "";
+			background-color: inherit;
+			width: 100%;
+			height: 400px;
+			opacity: 0.1;
+			left: 0;
+			bottom: 0;
+		}
+	}
+}

@@ -1,14 +1,19 @@
 ---
 import InputComponent from '../../components/inputComponent/InputComponent.astro';
 export interface props {
-  blockId: number,
-  quizTitle: string,
-  questions: Array<Question>
+	questionBlocks: Array<QuestionBlock>
+}
+export interface QuestionBlock {
+	blockId: number,
+	quizTitle: string,
+	questions: Array<Question>
 }
 export interface Question {
-  questionId: number,
-  question: string,
-  description: string,
+	questionId: number,
+	question: string,
+	description: string,
+	isLastQuestion?: boolean,
+	isLastQuestionsGroup?: boolean
 }
 const { quiz } = Astro.props;
 ---
@@ -18,35 +23,32 @@ const { quiz } = Astro.props;
 		<InputComponent inputId="personName" inputPlaceholder="Name" client:load />
 		<InputComponent inputId="personSurname" inputPlaceholder="Surname" client:load />
 		<button class="btn" data-btn="quiz-start" type="submit">Start</button>
+		<br><button class="btn" data-btn="quiz-random" type="submit">Рандомные данные</button>
 	</div>
-	<div class="quiz__list quiz__list--hidden" data-quiz-list={quiz.blockId}>
-		<h2 class="quiz__title">{quiz.quizTitle}</h2>
+	{ quiz.map((questionsBlock) => {
+		return (
+			// data-quiz-list указывает на блок вопросов
+			<div class="quiz__list quiz__list--hidden" data-quiz-list={questionsBlock.blockId}>
+				<h2 class="quiz__title">{questionsBlock.quizTitle}</h2>
 
-		{ quiz.questions.map((element, index) => {
-			const id = element.questionId;
-			const isHidden = index > 0 ? 'quiz__question--hidden' : '';
+				{ questionsBlock.questions.map((question, questionIndex) => {
+					const id = question.questionId;
+					const isHidden = questionIndex > 0 ? 'quiz__question--hidden' : '';
+					const createNextBtn = questionIndex + 1 === questionsBlock.questions.length ? 'last-question-in-block' : '';
 
-			return (
-				<div class={`quiz__question ${isHidden}`} data-question={`question-${id}`}>
-				<h3>{element.question}</h3>
-				<p>{element.description}</p>
+					return (
+						// data-questions-block - указывает к какому блоку вопросов относится вопрос
+						<div class={`quiz__question ${isHidden} ${createNextBtn}`} data-question={`question-${id}`} data-questions-block={questionsBlock.blockId}>
+							<h3>{question.question}</h3>
+							<p>{question.description}</p>
 
-				<div class="answers">
-					<input type="radio"text-prop={`kekus-${index + 1}`} name={`question-${id}`} id={`question-${id}-1`}>
-					<label class="answer" for={`question-${id}-1`}>1</label>
-					<input type="radio" name={`question-${id}`} id={`question-${id}-2`}>
-					<label class="answer" for={`question-${id}-2`}>2</label>
-					<input type="radio" name={`question-${id}`} id={`question-${id}-3`}>
-					<label class="answer" for={`question-${id}-3`}>3</label>
-					<input type="radio" name={`question-${id}`} id={`question-${id}-4`}>
-					<label class="answer" for={`question-${id}-4`}>4</label>
-					<input type="radio" name={`question-${id}`} id={`question-${id}-5`}>
-					<label class="answer" for={`question-${id}-5`}>5</label>
-				</div>
+							<div class="answers"></div>
+						</div>
+					);
+				}) }
 			</div>
-			);
-		}) }
-	</div>
+		);
+	}) }
 </div>
 
 <script>
