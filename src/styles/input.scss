@@ -1,12 +1,14 @@
-$input-pt: 8px;
+$input-pt: 16px;
 $input-pl: 16px;
 
 input[type="text"] {
 	width: 100%;
-	border-radius: 50px;
+	border-radius: 5px;
 	border: 1px solid #ccc;
 	padding: $input-pt $input-pl;
 	box-sizing: border-box;
+
+	outline: none !important;
 }
 
 // Стили для input с placeholder'ом
@@ -28,9 +30,14 @@ input[type="text"] {
 		max-width: calc(100% - #{$input-pl} * 2);
 
 		&.is-active {
+			// transform: translate(
+			// 		calc(-#{$input-pl} - 1em),
+			// 		calc(-100% - #{$input-pt} * 2)
+			// 	)
+			// 	scale(0.8);
 			transform: translate(
-					calc(-#{$input-pl} - 1em),
-					calc(-100% - #{$input-pt} * 2)
+					-22px,
+					-22px
 				)
 				scale(0.8);
 		}

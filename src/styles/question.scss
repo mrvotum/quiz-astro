@@ -4,12 +4,15 @@ body {
 
 .btn {
 	border: none;
-	border-radius: 50px;
+	border-radius: 5px;
 	padding: 10px 16px;
 	cursor: pointer;
 	background-color: #82A7C8;
 	transition: box-shadow ease-in-out 0.2s;
 	min-width: 135px;
+	letter-spacing: 0.05em;
+    font-size: 0.8em;
+	padding: 16px;
 
 	&:hover {
 		background-color: darken(#82A7C8, 3%);
@@ -24,7 +27,8 @@ body {
 
 .quiz {
 	width: 90%;
-	padding: 20px;
+	max-width: 1000px;
+	padding: 20px 40px;
 	border-radius: 10px;
 	box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
@@ -37,6 +41,7 @@ body {
 		left: 50%;
 		top: 50%;
 		transform: translate(-50%, -50%);
+		padding-top: 40px;
 	}
 }
 
@@ -54,22 +59,29 @@ body {
 		margin-bottom: 6px;
 	}
 
-	input {
-		border-radius: 50px;
-		border: 1px solid #ccc;
-		padding: 10px 16px;
-	}
-
 	.btn {
-		background-color: #9a2727;
+		background-color: #9D8DC7;
 		color: #fff;
 
 		&:hover {
-			background-color: darken(#9a2727, 3%);
+			background-color: darken(#9D8DC7, 3%);
 		}
 
 		&:active {
-			background-color: darken(#9a2727, 4%);
+			background-color: darken(#9D8DC7, 4%);
+		}
+
+		&--random {
+			color: #9D8DC7;
+			border: none;
+			background: none;
+
+			&:hover,
+			&:active {
+				background: none;
+				opacity: 0.8;
+				box-shadow: none;
+			}
 		}
 	}
 
@@ -81,8 +93,8 @@ body {
 		width: 100%;
 		height: 100%;
 		transition: all 0.4s cubic-bezier(0,1.1,1,1.1);
-		border-radius: 10px;
-		border: 5px solid #9a2727;
+		// border-radius: 10px;
+		// border: 2px solid #9a2727;
 		box-sizing: border-box;
 		padding: 10px;
 		transform: scale(0);
@@ -116,6 +128,11 @@ input[type="radio"] {
 
 .quiz__question {
 	transition: all 0.2s ease-in;
+	max-width: 600px;
+
+	&:not(:first-child) {
+		margin: 30px 0;
+	}
 
 	&--hidden {
 		opacity: 0;
@@ -130,6 +147,10 @@ input[type="radio"] {
 		margin-top: 0;
 		color: rgb(162, 162, 162);
 		font-size: 16px;
+	}
+
+	p {
+		line-height: 120%;
 	}
 }
 

@@ -58,7 +58,7 @@ export default class QuizForm {
 			} else {
 				const divEl = document.createElement("div");
 				divEl.classList.add("error-message");
-				divEl.innerHTML = `Поля обязательны для заполнения.<br>Введите хоть что-нибудь или нажмите "Рандомные данные"`;
+				divEl.innerHTML = `Поля обязательны для заполнения.<br>Введите хоть что-нибудь или нажмите &laquo;Рандомные данные&raquo;`;
 
 				this.btnStart.parentElement.appendChild(divEl);
 				setTimeout(() => {
